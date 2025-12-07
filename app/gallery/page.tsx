@@ -67,7 +67,7 @@ export default function GalleryPage() {
                     src={src}
                     alt={`School activity ${index + 1}`}
                     fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="object-contain bg-neutral-50 transition-transform duration-700 group-hover:scale-110"
                     sizes={isLarge ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 100vw, 25vw"}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />

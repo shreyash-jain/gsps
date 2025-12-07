@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Facebook, Mail, Phone, MapPin } from "lucide-react";
 
 export function SiteFooter() {
