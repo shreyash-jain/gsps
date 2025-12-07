@@ -48,6 +48,21 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Video Section */}
+      <section className="mx-auto mt-16 max-w-5xl px-4 sm:mt-20 sm:px-6">
+        <div className="overflow-hidden rounded-[2.5rem] bg-slate-900 shadow-2xl ring-4 ring-white/50">
+          <video
+            className="w-full h-auto aspect-video object-cover"
+            controls
+            playsInline
+            poster="/home-page-slides/slide-1.jpg"
+          >
+            <source src="/home_video/VIDEO-2025-11-13-15-01-52.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </section>
+
       <div className="space-y-24 pt-24">
         {/* Vision */}
         <section className="mx-auto max-w-6xl px-4">
