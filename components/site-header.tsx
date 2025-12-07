@@ -26,7 +26,7 @@ export function SiteHeader() {
         <Link href="/" className="flex items-center gap-3 font-semibold tracking-tight">
           <span className="relative inline-block h-10 w-10 overflow-hidden rounded-full ring-2 ring-primary ring-offset-2">
             <Image
-              src="https://gyansagarplayschool.co.in/wp-content/uploads/2023/11/cropped-IMG-20231103-WA0003.jpg"
+              src="/logo/IMG_7954.jpg"
               alt="GSPS Logo"
               fill
               className="object-cover"

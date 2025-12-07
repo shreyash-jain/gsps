@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Image from "next/image";
 import { Facebook, Mail, Phone, MapPin } from "lucide-react";
 
 export function SiteFooter() {
@@ -7,7 +7,17 @@ export function SiteFooter() {
       <div className="mx-auto max-w-7xl px-4 py-16">
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-4">
-            <h3 className="text-lg font-bold text-slate-900">Gyan Sagar Play School</h3>
+            <div className="flex items-center gap-2">
+              <span className="relative inline-block h-8 w-8 overflow-hidden rounded-full ring-1 ring-primary ring-offset-1">
+                <Image
+                  src="/logo/IMG_7954.jpg"
+                  alt="GSPS Logo"
+                  fill
+                  className="object-cover"
+                />
+              </span>
+              <h3 className="text-lg font-bold text-slate-900">Gyan Sagar Play School</h3>
+            </div>
             <p className="text-sm text-slate-600 max-w-xs">
               Nurturing young minds with love, care, and creativity. A holistic environment for your child's first steps in education.
             </p>
