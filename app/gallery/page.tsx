@@ -1,25 +1,26 @@
 import Image from "next/image";
 import { Camera } from "lucide-react";
+import fs from "fs";
+import path from "path";
 
-const images = [
-  "/gallery/IMG_7908.jpg",
-  "/gallery/IMG_7909.jpg",
-  "/gallery/IMG_7910.jpg",
-  "/gallery/IMG_7911.jpg",
-  "/gallery/IMG_7913.jpg",
-  "/gallery/IMG_7917.jpg",
-  "/gallery/IMG_7918.jpg",
-  "/gallery/IMG_7919.jpg",
-  "/gallery/IMG_7920.jpg",
-  "/gallery/IMG_7921.jpg",
-  "/gallery/IMG_7922.jpg",
-  "/gallery/IMG_7923.jpg",
-  "/gallery/IMG_7926.jpg",
-  "/gallery/IMG_7927.jpg",
-  "/gallery/IMG_7928.jpg",
-];
+function getGalleryImages() {
+  try {
+    const galleryDir = path.join(process.cwd(), "public/gallery");
+    const files = fs.readdirSync(galleryDir);
+
+    // Filter for image files
+    return files
+      .filter((file) => /\.(jpg|jpeg|png|webp)$/i.test(file))
+      .map((file) => `/gallery/${file}`);
+  } catch (error) {
+    console.error("Error reading gallery directory:", error);
+    return [];
+  }
+}
 
 export default function GalleryPage() {
+  const images = getGalleryImages();
+
   return (
     <div className="space-y-12 pb-20">
       {/* Hero Section */}
