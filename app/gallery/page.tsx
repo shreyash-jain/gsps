@@ -43,24 +43,39 @@ export default function GalleryPage() {
 
       {/* Gallery Grid */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="columns-1 gap-6 sm:columns-2 lg:columns-3 xl:columns-4 space-y-6">
-          {images.map((src, index) => (
-            <div
-              key={src}
-              className={`group relative overflow-hidden rounded-3xl bg-white shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:rotate-1 break-inside-avoid ring-4 ${index % 3 === 0 ? "ring-rose-100" : index % 3 === 1 ? "ring-amber-100" : "ring-emerald-100"
-                }`}
-            >
-              <div className="relative aspect-4/3 overflow-hidden">
-                <Image
-                  src={src}
-                  alt={`School activity ${index + 1}`}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 auto-rows-[250px] grid-flow-dense">
+          {images.map((src, index) => {
+            // Logic for sizing
+            const isLarge = index % 5 === 0 || index === 7;
+            const sizeClass = isLarge ? "sm:col-span-2 sm:row-span-2" : "col-span-1 row-span-1";
+
+            // Logic for rotation and color (pseudo-random feel)
+            const rotations = ["rotate-1", "-rotate-1", "rotate-2", "-rotate-2", "rotate-0"];
+            const rotation = rotations[index % rotations.length];
+
+            const rings = ["ring-rose-100", "ring-amber-100", "ring-emerald-100", "ring-sky-100", "ring-purple-100"];
+            const ringColor = rings[index % rings.length];
+
+            return (
+              <div
+                key={src}
+                className={`group relative overflow-hidden rounded-[2rem] bg-white shadow-md transition-all duration-300 hover:z-10 hover:scale-105 hover:shadow-2xl hover:rotate-0 ring-4 ${sizeClass} ${rotation} ${ringColor}`}
+              >
+                <div className="relative h-full w-full overflow-hidden">
+                  <Image
+                    src={src}
+                    alt={`School activity ${index + 1}`}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    sizes={isLarge ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 100vw, 25vw"}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+                  {/* Decorative 'tape' effect or sticker on hover could go here, for now just the nice ring */}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>
